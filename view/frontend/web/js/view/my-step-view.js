@@ -3,8 +3,11 @@ define([
     'uiComponent',
     'underscore',
     'Magento_Checkout/js/model/step-navigator',
-    'Magento_Ui/js/form/form'
-], function (ko, Component, _, stepNavigator) {
+    'jquery',
+    "Magento_Checkout/js/model/quote",
+    'mage/url',
+    'mage/storage'
+], function (ko, Component, _, stepNavigator, $, quote, urlBuilder, storage) {
     'use strict';
 
     return Component.extend({
@@ -76,7 +79,24 @@ define([
          * @returns void
          */
         navigateToNextStep: function () {
+            var valueDate = $('#datetime').val();
+            if (!valueDate) {
+                return false;
+            }
+            var quoteId = quote.getQuoteId();
+            var url = urlBuilder.build('custom/ajax/index');
+
             stepNavigator.next();
+
+            return storage.post(
+                url,
+                JSON.stringify({'quoteId': quoteId, 'date': $('#datetime').val(), 'comment': $('#comment').val()}),
+                false
+            ).done(function (response) {
+                    console.log(response);
+                }
+            ).fail(function (response) {
+            });
         }
     });
 });
