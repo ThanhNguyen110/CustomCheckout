@@ -17,21 +17,21 @@ class UpgradeData implements UpgradeDataInterface
 
     public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-        if (version_compare($context->getVersion(), '1.0.10') < 0) {
+        if (version_compare($context->getVersion(), '1.0.1') < 0) {
             $setup->startSetup();
             $this->eavSetupFactory->updateAttribute(2, 27, 'is_required', 1);
 
             $arr = [
-                'delivery_date'    => [
-                    'type' => 'datetime',
+                'delivery_date' => [
+                    'type'     => 'datetime',
                     'nullable' => false,
-                    'comment' => 'Delivery Date',
+                    'comment'  => 'Delivery Date',
                 ],
 
                 'delivery_comment' => [
-                    'type' => 'text',
+                    'type'     => 'text',
                     'nullable' => false,
-                    'comment' => 'Delivery Comment',
+                    'comment'  => 'Delivery Comment',
                 ]
             ];
             foreach ($arr as $key => $value) {
