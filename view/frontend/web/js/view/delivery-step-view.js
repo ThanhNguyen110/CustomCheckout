@@ -17,7 +17,7 @@ define([
 
         // add here your logic to display step,
         isVisible: ko.observable(true),
-        stepCode: 'delivery_step',
+        stepCode : 'delivery_step',
         stepTitle: 'Delivery Step',
 
         /**
@@ -41,9 +41,9 @@ define([
 
                 /**
                  * sort order value
-                 * 'sort order value' < 10: step displays before shipping step;
-                 * 10 < 'sort order value' < 20 : step displays between shipping and payment step
-                 * 'sort order value' > 20 : step displays after payment step
+                 * 'sort order value' < 10     : step displays before shipping step;
+                 * 10 < 'sort order value' < 20: step displays between shipping and payment step
+                 * 'sort order value' > 20     : step displays after payment step
                  */
                 15
             );
@@ -79,23 +79,25 @@ define([
          * @returns void
          */
         navigateToNextStep: function () {
-            var valueDate = $('#datetime').val();
-            if (!valueDate) {
+            var valueDate    = $('#datetime').val();
+            var valueComment = $('#comment').val();
+            var quoteId      = quote.getQuoteId();
+            var url          = urlBuilder.build('custom/index/index');
+            /* if (!valueDate) {
                 return false;
-            }
-            var quoteId = quote.getQuoteId();
-            var url = urlBuilder.build('custom/ajax/index');
+            } */
 
             stepNavigator.next();
 
             return storage.post(
                 url,
-                JSON.stringify({'quoteId': quoteId, 'date': $('#datetime').val(), 'comment': $('#comment').val()}),
+                JSON.stringify({'quoteId': quoteId, 'date': valueDate, 'comment': valueComment}),
                 false
             ).done(function (response) {
                     console.log(response);
                 }
             ).fail(function (response) {
+                console.log("error");
             });
         }
     });

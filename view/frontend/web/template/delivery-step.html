@@ -2,22 +2,13 @@
 <li id="delivery_step" data-bind="fadeVisible: isVisible">
     <div class="step-title" data-bind="i18n: stepTitle" data-role="title"></div>
     <div id="checkout-step-title" class="step-content" data-role="content">
-        <form data-mage-init='{"validation": {}}' data-bind="submit: navigateToNextStep" validate="validate" id="custom-checkout-form" class="form">
-            <div class="field">
-                <label for="datetime" class="label">
-                    <span>Delivery Date</span>
-                </label>
-                <div class="control">
-                    <input type="date" id="datetime" required />
-                </div>
-            </div>
-            <div class="field">
-                <label for="comment" class="label">
-                    <span>Delivery Comment</span>
-                </label>
-                <div class="control">
-                    <textarea name="comment" id="comment" cols="5"></textarea>
-                </div>
+        <form data-mage-init='{"validation": {}}' data-bind="submit: navigateToNextStep" validate="validate"
+            id="custom-checkout-form" class="form">
+            <div class="delivery-checkout">
+                <!-- ko foreach: getRegion('field-group-delivery') -->
+                <!-- ko template: getTemplate() -->
+                <!-- /ko -->
+                <!-- /ko -->
             </div>
             <div class="actions-toolbar">
                 <div class="primary">

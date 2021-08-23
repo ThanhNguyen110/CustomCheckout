@@ -1,6 +1,6 @@
 <?php
 
-namespace AHT\CustomCheckout\Controller\Ajax;
+namespace AHT\CustomCheckout\Controller\Index;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
@@ -13,6 +13,11 @@ class Index extends \Magento\Framework\App\Action\Action
      * @param \Magento\Quote\Model\QuoteFactory $quoteFactory
      */
     private $_quoteFactory;
+
+    /**
+     * @param \Magento\Quote\Model\QuoteRepository $quoteRepository
+     */
+    private $_quoteRepository;
 
     /**
      * @param \Magento\Framework\App\Action\Context $context
@@ -31,14 +36,16 @@ class Index extends \Magento\Framework\App\Action\Action
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $pageFactory,
+        \Magento\Quote\Model\QuoteRepository $quoteRepository,
         \Magento\Framework\Serialize\Serializer\Json $json,
         \Magento\Framework\Controller\Result\JsonFactory $jsonFactory,
         \Magento\Quote\Model\QuoteFactory $quoteFactory
     ) {
-        $this->_pageFactory  = $pageFactory;
-        $this->_json         = $json;
-        $this->_jsonFactory  = $jsonFactory;
-        $this->_quoteFactory = $quoteFactory;
+        $this->_pageFactory     = $pageFactory;
+        $this->_quoteRepository = $quoteRepository;
+        $this->_json            = $json;
+        $this->_jsonFactory     = $jsonFactory;
+        $this->_quoteFactory    = $quoteFactory;
         return parent:: __construct($context);
     }
     /**
@@ -60,6 +67,5 @@ class Index extends \Magento\Framework\App\Action\Action
 
         // Save to quote table
         $this->_quoteRepository->save($quote);
-        }
     }
 }

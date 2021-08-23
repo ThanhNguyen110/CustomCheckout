@@ -21,4 +21,4 @@ class SaveCheckout implements \Magento\Framework\Event\ObserverInterface
         $order->setData('delivery_comment', $quote->getDeliveryComment());
         $order->save();
     }
-} 
+}
