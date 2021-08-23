@@ -46,7 +46,7 @@ class Index extends \Magento\Framework\App\Action\Action
         $this->_json            = $json;
         $this->_jsonFactory     = $jsonFactory;
         $this->_quoteFactory    = $quoteFactory;
-        return parent:: __construct($context);
+        return parent::__construct($context);
     }
     /**
      * View page action
@@ -64,8 +64,8 @@ class Index extends \Magento\Framework\App\Action\Action
         // Fill data
         $quote->setData('delivery_date', $response['date']);
         $quote->setData('delivery_comment', $response['comment']);
-
         // Save to quote table
         $this->_quoteRepository->save($quote);
+        return  var_dump($this->_quoteRepository->save($quote));
     }
 }

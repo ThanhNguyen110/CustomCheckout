@@ -2,7 +2,7 @@
 <li id="delivery_step" data-bind="fadeVisible: isVisible">
     <div class="step-title" data-bind="i18n: stepTitle" data-role="title"></div>
     <div id="checkout-step-title" class="step-content" data-role="content">
-        <form data-mage-init='{"validation": {}}' data-bind="submit: navigateToNextStep" validate="validate"
+        <form data-mage-init="{'validation': {}}" data-bind="submit: navigateToNextStep" validate="validate"
             id="custom-checkout-form" class="form">
             <div class="delivery-checkout">
                 <!-- ko foreach: getRegion('field-group-delivery') -->

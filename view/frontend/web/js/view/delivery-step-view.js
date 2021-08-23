@@ -79,8 +79,8 @@ define([
          * @returns void
          */
         navigateToNextStep: function () {
-            var valueDate    = $('#datetime').val();
-            var valueComment = $('#comment').val();
+            var valueDate    = $("[name='delivery-date']").val();
+            var valueComment = $("[name='delivery-comment']").val();
             var quoteId      = quote.getQuoteId();
             var url          = urlBuilder.build('custom/index/index');
             /* if (!valueDate) {
@@ -98,6 +98,8 @@ define([
                 }
             ).fail(function (response) {
                 console.log("error");
+                console.log(valueDate);
+                console.log(valueComment);
             });
         }
     });

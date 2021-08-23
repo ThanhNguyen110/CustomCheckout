@@ -29,6 +29,32 @@
 														field-group-delivery
 													</item>
 													<item name="children" xsi:type="array">
+														<item name="delivery-date" xsi:type="array">
+															<item name="validation" xsi:type="array">
+																<item name="required-entry" xsi:type="boolean">
+																	true
+																</item>
+															</item>
+														</item>
+													</item>
+												</item>
+											</item>
+										</item>
+										<item name="shipping-step" xsi:type="array">
+											<item name="children" xsi:type="array">
+												<item name="shippingAddress" xsi:type="array">
+													<item name="children" xsi:type="array">
+														<item name="shipping-address-fieldset" xsi:type="array">
+															<item name="children" xsi:type="array">
+																<item name="company" xsi:type="array">
+																	<item name="validation" xsi:type="array">
+																		<item name="required-entry" xsi:type="boolean">
+																			true
+																		</item>
+																	</item>
+																</item>
+															</item>
+														</item>
 													</item>
 												</item>
 											</item>
