@@ -1,13 +1,15 @@
 <?php
+
 /** @var \AHT\CustomCheckout\Block\Template $block */
-    $order = $block->getOrder();
+$order = $block->getOrder();
 ?>
-<div class="admin__page-section-item order-payment-method">
-    <div class="admin__page-section-item-title">
-        <span class="title">Delivery Information</span>
-        <span><?= /* @noEscape */ $block->getEditLink(); ?></span>
+<section class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Delivery Information')) ?></span>
+        <div class="actions"><?= /* @noEscape */ $block->getEditLink(); ?></div>
     </div>
-    <div class="admin__page-section-item-content">
-        <p><span><label>Date : </label></span><?= $order->getDeliveryDate()?></p>
-        <p><span><label>Note : </label></span><?= $order->getDeliveryComment()?></p>
+    <div class="admin__page-section-content">
+        <p><span><label>Date : </label></span><?= $order->getDeliveryDate() ?></p>
+        <p><span><label>Note : </label></span><?= $order->getDeliveryComment() ?></p>
     </div>
+</section>

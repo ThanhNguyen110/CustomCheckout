@@ -17,7 +17,7 @@ define([
 
         // add here your logic to display step,
         isVisible: ko.observable(true),
-        stepCode : 'delivery_step',
+        stepCode: 'delivery_step',
         stepTitle: 'Delivery Step',
 
         /**
@@ -79,26 +79,23 @@ define([
          * @returns void
          */
         navigateToNextStep: function () {
-            var valueDate    = $("[name='delivery-date']").val();
+            var valueDate = $("[name='delivery-date']").val();
             var valueComment = $("[name='delivery-comment']").val();
-            var quoteId      = quote.getQuoteId();
-            var url          = urlBuilder.build('custom/index/index');
-            /* if (!valueDate) {
-                return false;
-            } */
+            var quoteId = quote.getQuoteId();
+            var url = urlBuilder.build('custom/index/index');
 
             stepNavigator.next();
 
             return storage.post(
                 url,
-                JSON.stringify({'quoteId': quoteId, 'date': valueDate, 'comment': valueComment}),
+                JSON.stringify({ 'quoteId': quoteId, 'date': valueDate, 'comment': valueComment }),
                 false
             ).done(function (response) {
-                    console.log(response);
-                }
+                console.log(response);
+            }
             ).fail(function (response) {
                 console.log("error");
-                console.log(valueDate);
+                console.log(quoteId);
                 console.log(valueComment);
             });
         }

@@ -55,7 +55,9 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
+        // Get value from AJAX request
         $data     = $this->getRequest()->getContent();
+        // Convert Json to Array
         $response = $this->_json->unserialize($data);
 
         $quoteId = $response['quoteId'];
