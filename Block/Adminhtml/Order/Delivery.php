@@ -1,7 +1,7 @@
 <?php
 namespace AHT\CustomCheckout\Block\Adminhtml\Order;
 
-class View extends \Magento\Framework\View\Element\Template
+class Delivery extends \Magento\Framework\View\Element\Template
 {
     const ADMIN_RESOURCE = 'Magento_Sales::actions_edit';
     /**

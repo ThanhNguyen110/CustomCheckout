@@ -84,14 +84,12 @@ define([
             var quoteId = quote.getQuoteId();
             var url = urlBuilder.build('custom/index/index');
 
-            stepNavigator.next();
-
             return storage.post(
                 url,
                 JSON.stringify({ 'quoteId': quoteId, 'date': valueDate, 'comment': valueComment }),
                 false
             ).done(function (response) {
-                console.log(response);
+                stepNavigator.next();
             }
             ).fail(function (response) {
                 console.log("error");
